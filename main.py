@@ -10,7 +10,7 @@ from datetime import datetime
 app = FastAPI(title="Kishkindha Praja Dal API")
 
 # Target voices to unlock the poster
-TARGET_WISHES = 1
+TARGET_WISHES = 30
 
 DB_FILE = "campaign_feedback.db"
 

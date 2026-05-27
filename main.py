@@ -93,6 +93,20 @@ async def serve_frontend():
 
 # Mount the entire static folder to serve images like IMG-20260527-WA0018.jpg
 app.mount("/", StaticFiles(directory="static"), name="static")
+@app.get("/admin/feedbacks")
+async def view_feedbacks():
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        conn.row_factory = sqlite3.Row  # This formats the output nicely
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM feedback ORDER BY timestamp DESC")
+        rows = cursor.fetchall()
+        conn.close()
+        
+        # Return all rows as a JSON list
+        return [dict(row) for row in rows]
+    except Exception as e:
+        return {"error": str(e)}
 
 if __name__ == "__main__":
     import uvicorn

@@ -182,6 +182,14 @@
             text-align: center;
             margin-top: 15px;
         }
+
+        .voted-message {
+            text-align: center;
+            padding: 15px;
+            border: 1px solid #444;
+            border-radius: 8px;
+            background: #222;
+        }
     </style>
 </head>
 <body>
@@ -224,11 +232,17 @@
                 <button type="submit">Submit Voice & Unlock 🌅<br>ಸಲ್ಲಿಸಿ ಹಾಗೂ ಅನ್ಲಾಕ್ ಮಾಡಿ</button>
             </form>
 
+            <!-- State: Already Voted (Hidden by default) -->
+            <div id="alreadyVotedState" class="hidden voted-message">
+                <h3 style="color: var(--saffron); margin-top: 0;">You're in! / ನಿಮ್ಮ ಕನಸು ತಲುಪಿದೆ!</h3>
+                <p style="font-size: 0.9rem; color: #ccc;">You have successfully submitted your vision. Thank you for participating!<br><br>ನೀವು ಈಗಾಗಲೇ ನಿಮ್ಮ ಕನಸನ್ನು ಹಂಚಿಕೊಂಡಿದ್ದೀರಿ. ಭಾಗವಹಿಸಿದ್ದಕ್ಕಾಗಿ ಧನ್ಯವಾದಗಳು!</p>
+            </div>
+
             <!-- State: Success / Unlocked -->
             <div id="successState" class="hidden">
                 <div style="text-align:center; color: var(--gold);">
                     <h3 style="line-height: 1.4;">✨ THE VISION IS UNVEILED! ✨<br><span style="font-size: 1.2rem;">ದೃಷ್ಟಿಕೋನ ಅನಾವರಣಗೊಂಡಿದೆ!</span></h3>
-                    <p style="color: #fff; font-size:0.9rem; margin-bottom:15px; line-height: 1.4;">Thank you for your vision! Share Pavan Kumar B's manifesto directly with your neighborhood on WhatsApp.<br><span style="color: #ccc;">ನಿಮ್ಮ ಕನಸಿಗೆ ಧನ್ಯವಾದಗಳು! ಪವನ್ ಕುಮಾರ್ ಬಿ ಅವರ ಪ್ರಣಾಳಿಕೆಯನ್ನು ನಿಮ್ಮ ಸ್ನೇಹಿತರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ.</span></p>
+                    <p style="color: #fff; font-size:0.9rem; margin-bottom:15px; line-height: 1.4;">Share Pavan Kumar B's manifesto directly with your neighborhood on WhatsApp.<br><span style="color: #ccc;">ಪವನ್ ಕುಮಾರ್ ಬಿ ಅವರ ಪ್ರಣಾಳಿಕೆಯನ್ನು ನಿಮ್ಮ ಸ್ನೇಹಿತರೊಂದಿಗೆ ಹಂಚಿಕೊಳ್ಳಿ.</span></p>
                     
                     <a href="https://wa.me/?text=%F0%9F%8C%85%20%E0%B2%86%E0%B2%A8%E0%B3%86%E0%B2%97%E0%B3%81%E0%B2%82%E0%B2%A6%E0%B2%BF%20%E0%B2%AC%E0%B2%A6%E0%B2%B2%E0%B2%BE%E0%B2%97%E0%B2%B2%E0%B2%BF%20%E2%80%94%20%E0%B2%95%E0%B2%BF%E0%B2%B7%E0%B3%8D%E0%B2%95%E0%B2%BF%E0%B2%A0%E0%B3%8D%E0%B2%A7%20%E0%B2%86%E0%B2%97%E0%B2%B2%E0%B2%BF%20%F0%9F%8C%85%0A%0AI%20support%20PAVAN%20KUMAR%20B%20for%20the%20Gram%20Panchayat%20Elections%202026.%0A%0A%E0%B2%AE%E0%B2%A4%20%E0%B2%B9%E0%B2%BE%E0%B2%95%E0%B2%BF%21%20%E0%B2%97%E0%B3%86%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B2%BF%E0%B2%B8%E0%B2%BF%21%20%E0%B2%AC%E0%B2%A6%E0%B2%B2%E0%B2%BE%E0%B2%AF%E0%B2%BF%E0%B2%B8%E0%B2%BF%21%20%F0%9F%97%B3%EF%B8%8F%0A%0ASupport%20here%3A%20https%3A%2F%2Fkpd-campain.onrender.com" 
                        target="_blank" 
@@ -245,8 +259,7 @@
         const API_BASE_URL = window.location.origin;
         
         // Anti-spam check: Look inside the browser's local storage
-        // Changed to 'let' so we can update it immediately when they submit
-        let hasUserVoted = localStorage.getItem('kpd_voted');
+        const hasUserVoted = localStorage.getItem('kpd_voted');
 
         async function checkStatus() {
             try {
@@ -259,21 +272,27 @@
         }
 
         function updateUI(data) {
-            // The Progress Bar ALWAYS updates globally based on total submissions vs target
             const percentage = Math.min((data.current_wishes / data.target_wishes) * 100, 100);
             
             document.getElementById('meterBar').style.width = `${percentage}%`;
             document.getElementById('meterText').innerText = `${Math.round(percentage)}%`;
 
-            // NEW LOGIC: Unblur the poster and show WhatsApp if THIS user voted OR if the global goal is unlocked!
-            if (hasUserVoted || data.is_unlocked) {
+            // If the goal is reached, show the WhatsApp share screen
+            if (data.is_unlocked) {
                 document.getElementById('campaignPoster').classList.remove('blurred');
                 document.getElementById('overlayText').style.opacity = '0';
                 
                 document.getElementById('wishForm').classList.add('hidden');
                 document.getElementById('wishForm').style.display = 'none';
+                document.getElementById('alreadyVotedState').classList.add('hidden');
                 document.getElementById('successState').classList.remove('hidden');
             } 
+            // If the goal isn't reached yet, but THIS user already submitted, show a thank you message
+            else if (hasUserVoted) {
+                document.getElementById('wishForm').classList.add('hidden');
+                document.getElementById('wishForm').style.display = 'none';
+                document.getElementById('alreadyVotedState').classList.remove('hidden');
+            }
         }
 
         document.getElementById('wishForm').addEventListener('submit', async (e) => {
@@ -292,14 +311,16 @@
                 });
                 
                 if (response.ok) {
-                    // 1. Mark this user as having voted to prevent spam
+                    // Anti-spam save: Mark this user's browser as having voted
                     localStorage.setItem('kpd_voted', 'true');
-                    hasUserVoted = true; 
                     
-                    // 2. Fetch the updated numbers from the backend
                     await response.json();
                     
-                    // 3. Immediately trigger the UI update (which will now unblur the poster for them!)
+                    // Immediately hide the form and show the thank you message
+                    document.getElementById('wishForm').classList.add('hidden');
+                    document.getElementById('wishForm').style.display = 'none';
+                    document.getElementById('alreadyVotedState').classList.remove('hidden');
+                    
                     await checkStatus();
                 } else {
                     alert("Submission failed. Server returned an error.");

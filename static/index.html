@@ -8,13 +8,10 @@
     <!-- 👇 WhatsApp & Facebook Preview Meta Tags 👇 -->
     <meta property="og:title" content="Kishkindha Praja Dal - Pavan Kumar B" />
     <meta property="og:description" content="ಆನೆಗುಂದಿ ಬದಲಾಗಲಿ — ಕಿಷ್ಕಿಂಧ ಆಗಲಿ! I support PAVAN KUMAR B for the Gram Panchayat Elections 2026." />
-    <!-- IMPORTANT: Replace YOUR_PUBLIC_LINK_HERE with your actual Render or Ngrok link -->
-    <meta property="og:image" content="https://YOUR_PUBLIC_LINK_HERE.com/IMG-20260527-WA0018.jpg" />
-    <meta property="og:url" content="https://YOUR_PUBLIC_LINK_HERE.com" />
-    <meta property="og:type" content="website" />
-    <!-- 👆 WhatsApp & Facebook Preview Meta Tags 👆 -->
     <meta property="og:image" content="https://kpd-campain.onrender.com/static/IMG-20260527-WA0018.jpg" />
     <meta property="og:url" content="https://kpd-campain.onrender.com" />
+    <meta property="og:type" content="website" />
+    <!-- 👆 WhatsApp & Facebook Preview Meta Tags 👆 -->
 
     <style>
         :root {
@@ -198,8 +195,7 @@
                 <h2 style="color: var(--gold); margin-bottom: 5px;">Sankalpa Reveal</h2>
                 <p style="font-size: 0.9rem;">Submit your vision for Anegundi to unlock Pavan Kumar B's official Ward 2 vision poster.</p>
             </div>
-            <!-- Ensure this points exactly to your image file -->
-            <img id="campaignPoster" src="IMG-20260527-WA0018.jpg" class="poster-image blurred" alt="Campaign Poster">
+            <img id="campaignPoster" src="/static/IMG-20260527-WA0018.jpg" class="poster-image blurred" alt="Campaign Poster">
         </div>
 
         <div style="width: 100%; text-align: justify; margin-bottom: 5px; font-size: 0.85rem; color: #aaa;">
@@ -212,7 +208,7 @@
 
         <div class="interaction-card">
             
-            <!-- The Form -->
+            <!-- The Input Form -->
             <form id="wishForm">
                 <div class="form-group">
                     <label for="citizenName">Your Name / ನಿಮ್ಮ ಹೆಸರು</label>
@@ -225,14 +221,14 @@
                 <button type="submit">Submit Voice & Unlock 🌅</button>
             </form>
 
-            <!-- The Success State (Hidden by default) -->
+            <!-- The Success Container (Perfectly Separated) -->
             <div id="successState" class="hidden">
                 <div style="text-align:center; color: var(--gold);">
                     <h3>✨ THE VISION IS UNVEILED! ✨</h3>
                     <p style="color: #fff; font-size:0.9rem; margin-bottom:15px;">Share Pavan Kumar B's manifesto directly with your neighborhood on WhatsApp.</p>
                     
-                    <!-- 👇 Updated WhatsApp Link with Pre-filled text 👇 -->
-                    <a href="https://wa.me/?text=%F0%9F%8C%85%20%E0%B2%86%E0%B2%A8%E0%B3%86%E0%B2%97%E0%B3%81%E0%B2%82%E0%B2%A6%E0%B2%BF%20%E0%B2%AC%E0%B2%A6%E0%B2%B2%E0%B2%BE%E0%B2%97%E0%B2%B2%E0%B2%BF%20%E2%80%94%20%E0%B2%95%E0%B2%BF%E0%B2%B7%E0%B3%8D%E0%B2%95%E0%B2%BF%E0%B2%A0%E0%B3%8D%E0%B2%A7%20%E0%B2%86%E0%B2%97%E0%B2%B2%E0%B2%BF%20%F0%9F%8C%85%0A%0AI%20support%20PAVAN%20KUMAR%20B%20for%20the%20Gram%20Panchayat%20Elections%202026.%0A%0A%E0%B2%AE%E0%B2%A4%20%E0%B2%B9%E0%B2%BE%E0%B2%95%E0%B2%BF%21%20%E0%B2%97%E0%B3%86%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B2%BF%E0%B2%B8%E0%B2%BF%21%20%E0%B2%AC%E0%B2%A6%E0%B2%B2%E0%B2%BE%E0%B2%AF%E0%B2%BF%E0%B2%B8%E0%B2%BF%21%20%F0%9F%97%B3%EF%B8%8F%0A%0ASupport%20here%3A%20https%3A%2F%2FYOUR_PUBLIC_LINK_HERE.com" 
+                    <!-- Fully Url-Encoded WhatsApp Text to avoid javascript layout script crashing -->
+                    <a href="https://wa.me/?text=%F0%9F%8C%85%20%E0%B2%86%E0%B2%A8%E0%B3%86%E0%B2%97%E0%B3%81%E0%B2%82%E0%B2%A6%E0%B2%BF%20%E0%B2%AC%E0%B2%A6%E0%B2%B2%E0%B2%BE%E0%B2%97%E0%B2%B2%E0%B2%BF%20%E2%80%94%20%E0%B2%95%E0%B2%BF%E0%B2%B7%E0%B3%8D%E0%B2%95%E0%B2%BF%E0%B2%A0%E0%B3%8D%E0%B2%A7%20%E0%B2%86%E0%B2%97%E0%B2%B2%E0%B2%BF%20%F0%9F%8C%85%0A%0AI%20support%20PAVAN%20KUMAR%20B%20for%20the%20Gram%20Panchayat%20Elections%202026.%0A%0A%E0%B2%AE%E0%B2%A4%20%E0%B2%B9%E0%B2%BE%E0%B2%95%E0%B2%BF%21%20%E0%B2%97%E0%B3%86%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B2%BF%E0%B2%B8%E0%B2%BF%21%20%E0%B2%AC%E0%B2%A6%E0%B2%B2%E0%B2%BE%E0%B2%AF%E0%B2%BF%E0%B2%B8%E0%B2%BF%21%20%F0%9F%97%B3%EF%B8%8F%0A%0ASupport%20here%3A%20https%3A%2F%2Fkpd-campain.onrender.com" 
                        target="_blank" 
                        class="whatsapp-btn">
                        Share on WhatsApp 📱
@@ -262,10 +258,10 @@
             document.getElementById('meterBar').style.width = `${percentage}%`;
             document.getElementById('meterText').innerText = `${Math.round(percentage)}%`;
 
-            // Using the logic from your screenshot
             if (data.is_unlocked) {
                 document.getElementById('campaignPoster').classList.remove('blurred');
                 document.getElementById('overlayText').style.opacity = '0';
+                document.getElementById('wishForm').style.add('hidden');
                 document.getElementById('wishForm').style.display = 'none';
                 document.getElementById('successState').classList.remove('hidden');
             }
@@ -286,15 +282,20 @@
                     body: JSON.stringify(payload)
                 });
                 
-                await response.json();
-                setTimeout(checkStatus, 500);
+                if (response.ok) {
+                    await response.json();
+                    await checkStatus();
+                } else {
+                    alert("Submission failed. Server returned an error.");
+                }
 
             } catch (error) {
+                console.error("Error submitting form:", error);
                 alert("Could not connect to the database. Please try again later.");
             }
         });
 
-        // Initialize on load
+        // Safe Initialization on document load
         document.addEventListener('DOMContentLoaded', () => {
             checkStatus();
         });

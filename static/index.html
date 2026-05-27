@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishkindha Praja Dal - Ward 2 Reveal</title>
+
+    <!-- 👇 WhatsApp & Facebook Preview Meta Tags 👇 -->
+    <meta property="og:title" content="Kishkindha Praja Dal - Pavan Kumar B" />
+    <meta property="og:description" content="ಆನೆಗುಂದಿ ಬದಲಾಗಲಿ — ಕಿಷ್ಕಿಂಧ ಆಗಲಿ! I support PAVAN KUMAR B for the Gram Panchayat Elections 2026." />
+    <!-- IMPORTANT: Replace YOUR_PUBLIC_LINK_HERE with your actual Render or Ngrok link -->
+    <meta property="og:image" content="https://YOUR_PUBLIC_LINK_HERE.com/IMG-20260527-WA0018.jpg" />
+    <meta property="og:url" content="https://YOUR_PUBLIC_LINK_HERE.com" />
+    <meta property="og:type" content="website" />
+    <!-- 👆 WhatsApp & Facebook Preview Meta Tags 👆 -->
+
+    <style>
+        :root {
+            --primary-blue: #0E3B68;
+            --saffron: #F37022;
+            --gold: #FDB813;
+            --dark-bg: #111111;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-blue), #071f38);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        header p {
+            margin: 5px 0 0 0;
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .poster-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 2px solid #333;
+            margin-bottom: 25px;
+            aspect-ratio: 9 / 19;
+            background: #222;
+        }
+
+        .poster-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: filter 1s ease-in-out;
+        }
+
+        .blurred {
+            filter: blur(40px) brightness(0.2);
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
+            z-index: 10;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .meter-container {
+            width: 100%;
+            background-color: #222;
+            border-radius: 20px;
+            padding: 4px;
+            border: 1px solid #444;
+            margin-bottom: 20px;
+        }
+
+        .meter-bar {
+            width: 0%;
+            height: 20px;
+            background: linear-gradient(90deg, var(--saffron), var(--gold));
+            border-radius: 16px;
+            transition: width 0.5s ease;
+        }
+
+        .interaction-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #444;
+            background-color: #2b2b2b;
+            color: #fff;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--saffron), #d9550b);
+            border: none;
+            color: white;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+        
+        .whatsapp-btn {
+            display: block; 
+            background: #25D366; 
+            color: white; 
+            padding: 14px; 
+            text-decoration: none; 
+            border-radius: 6px; 
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>KISHKINDA PRAJA DAL</h1>
+        <p>ಆನೆಗುಂದಿ ಬದಲಾಗಲಿ — ಕಿಷ್ಕಿಂಧ ಆಗಲಿ!</p>
+    </header>
+
+    <div class="main-container">
+        
+        <div class="poster-wrapper">
+            <div id="overlayText" class="overlay-text">
+                <h2 style="color: var(--gold); margin-bottom: 5px;">Sankalpa Reveal</h2>
+                <p style="font-size: 0.9rem;">Submit your vision for Anegundi to unlock Pavan Kumar B's official Ward 2 vision poster.</p>
+            </div>
+            <!-- Ensure this points exactly to your image file -->
+            <img id="campaignPoster" src="IMG-20260527-WA0018.jpg" class="poster-image blurred" alt="Campaign Poster">
+        </div>
+
+        <div style="width: 100%; text-align: justify; margin-bottom: 5px; font-size: 0.85rem; color: #aaa;">
+            <span>Sankalpa Progress Meter:</span>
+            <span id="meterText" style="float: right; color: var(--gold);">0%</span>
+        </div>
+        <div class="meter-container">
+            <div id="meterBar" class="meter-bar"></div>
+        </div>
+
+        <div class="interaction-card">
+            
+            <!-- The Form -->
+            <form id="wishForm">
+                <div class="form-group">
+                    <label for="citizenName">Your Name / ನಿಮ್ಮ ಹೆಸರು</label>
+                    <input type="text" id="citizenName" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="citizenIssue">What change do you want to see in Ward 2? / ನಿಮ್ಮ ಕನಸಿನ ಆನೆಗುಂದಿ?</label>
+                    <textarea id="citizenIssue" required placeholder="e.g., Clean water infrastructure, solar street lights..."></textarea>
+                </div>
+                <button type="submit">Submit Voice & Unlock 🌅</button>
+            </form>
+
+            <!-- The Success State (Hidden by default) -->
+            <div id="successState" class="hidden">
+                <div style="text-align:center; color: var(--gold);">
+                    <h3>✨ THE VISION IS UNVEILED! ✨</h3>
+                    <p style="color: #fff; font-size:0.9rem; margin-bottom:15px;">Share Pavan Kumar B's manifesto directly with your neighborhood on WhatsApp.</p>
+                    
+                    <!-- 👇 Updated WhatsApp Link with Pre-filled text 👇 -->
+                    <a href="https://wa.me/?text=%F0%9F%8C%85%20%E0%B2%86%E0%B2%A8%E0%B3%86%E0%B2%97%E0%B3%81%E0%B2%82%E0%B2%A6%E0%B2%BF%20%E0%B2%AC%E0%B2%A6%E0%B2%B2%E0%B2%BE%E0%B2%97%E0%B2%B2%E0%B2%BF%20%E2%80%94%20%E0%B2%95%E0%B2%BF%E0%B2%B7%E0%B3%8D%E0%B2%95%E0%B2%BF%E0%B2%A0%E0%B3%8D%E0%B2%A7%20%E0%B2%86%E0%B2%97%E0%B2%B2%E0%B2%BF%20%F0%9F%8C%85%0A%0AI%20support%20PAVAN%20KUMAR%20B%20for%20the%20Gram%20Panchayat%20Elections%202026.%0A%0A%E0%B2%AE%E0%B2%A4%20%E0%B2%B9%E0%B2%BE%E0%B2%95%E0%B2%BF%21%20%E0%B2%97%E0%B3%86%E0%B2%B2%E0%B3%8D%E0%B2%B2%E0%B2%BF%E0%B2%B8%E0%B2%BF%21%20%E0%B2%AC%E0%B2%A6%E0%B2%B2%E0%B2%BE%E0%B2%AF%E0%B2%BF%E0%B2%B8%E0%B2%BF%21%20%F0%9F%97%B3%EF%B8%8F%0A%0ASupport%20here%3A%20https%3A%2F%2FYOUR_PUBLIC_LINK_HERE.com" 
+                       target="_blank" 
+                       class="whatsapp-btn">
+                       Share on WhatsApp 📱
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = window.location.origin;
+
+        async function checkStatus() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/status`);
+                const data = await response.json();
+                updateUI(data);
+            } catch (error) {
+                console.error("Error communicating with backend API:", error);
+            }
+        }
+
+        function updateUI(data) {
+            const percentage = Math.min((data.current_wishes / data.target_wishes) * 100, 100);
+            
+            document.getElementById('meterBar').style.width = `${percentage}%`;
+            document.getElementById('meterText').innerText = `${Math.round(percentage)}%`;
+
+            // Using the logic from your screenshot
+            if (data.is_unlocked) {
+                document.getElementById('campaignPoster').classList.remove('blurred');
+                document.getElementById('overlayText').style.opacity = '0';
+                document.getElementById('wishForm').style.display = 'none';
+                document.getElementById('successState').classList.remove('hidden');
+            }
+        }
+
+        document.getElementById('wishForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const payload = {
+                citizen_name: document.getElementById('citizenName').value,
+                issue: document.getElementById('citizenIssue').value
+            };
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/submit_wish`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                await response.json();
+                setTimeout(checkStatus, 500);
+
+            } catch (error) {
+                alert("Could not connect to the database. Please try again later.");
+            }
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            checkStatus();
+        });
+    </script>
+</body>
+</html>

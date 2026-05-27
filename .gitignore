@@ -1,0 +1,32 @@
+# Python bytecode and cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Local Database
+*.db
+*.sqlite3
+
+# Environment variables / Secrets (if you add them later)
+.env
+.env.*
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# IDEs and Code Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp

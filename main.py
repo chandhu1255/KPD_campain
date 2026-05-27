@@ -15,7 +15,7 @@ TARGET_WISHES = 30
 DB_FILE = "campaign_feedback.db"
 
 def init_db():
-    """Creates the SQLite database and feedback table if it doesn't exist."""
+    """Creates the SQLite database and feedbacks table if it doesn't exist."""
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute('''
@@ -36,7 +36,8 @@ class WishSubmission(BaseModel):
     citizen_name: str
     issue: str
 
-@app.get("/api/status")
+# 👇 Fixed route to match frontend (/status instead of /api/status)
+@app.get("/status")
 async def get_status():
     """Returns the current count of submissions and unlock status."""
     conn = sqlite3.connect(DB_FILE)
@@ -53,7 +54,8 @@ async def get_status():
         "is_unlocked": is_unlocked
     }
 
-@app.post("/api/submit_wish")
+# 👇 Fixed route to match frontend (/submit_wish instead of /api/submit_wish)
+@app.post("/submit_wish")
 async def submit_wish(wish: WishSubmission):
     """Saves the citizen's feedback to the database."""
     conn = sqlite3.connect(DB_FILE)
@@ -83,6 +85,22 @@ async def submit_wish(wish: WishSubmission):
 # Ensure the static directory exists (this is where index.html and the image go)
 os.makedirs("static", exist_ok=True)
 
+@app.get("/admin/feedbacks")
+async def view_feedbacks():
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        conn.row_factory = sqlite3.Row  # This formats the output nicely
+        cursor = conn.cursor()
+        # 👇 Fixed table name here (feedbacks plural)
+        cursor.execute("SELECT * FROM feedbacks ORDER BY timestamp DESC")
+        rows = cursor.fetchall()
+        conn.close()
+        
+        # Return all rows as a JSON list
+        return [dict(row) for row in rows]
+    except Exception as e:
+        return {"error": str(e)}
+
 @app.get("/")
 async def serve_frontend():
     """Serves the main HTML file when users visit the root URL."""
@@ -93,20 +111,6 @@ async def serve_frontend():
 
 # Mount the entire static folder to serve images like IMG-20260527-WA0018.jpg
 app.mount("/", StaticFiles(directory="static"), name="static")
-@app.get("/admin/feedbacks")
-async def view_feedbacks():
-    try:
-        conn = sqlite3.connect(DB_FILE)
-        conn.row_factory = sqlite3.Row  # This formats the output nicely
-        cursor = conn.cursor()
-        cursor.execute("SELECT * FROM feedback ORDER BY timestamp DESC")
-        rows = cursor.fetchall()
-        conn.close()
-        
-        # Return all rows as a JSON list
-        return [dict(row) for row in rows]
-    except Exception as e:
-        return {"error": str(e)}
 
 if __name__ == "__main__":
     import uvicorn
